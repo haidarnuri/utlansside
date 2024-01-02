@@ -4,16 +4,16 @@ services:
   frontend:
     build: ./frontend/utlansapp
     ports:
-      - "3000:3000" # Anta at React-appen din kjører på port 3000
+      - "3000:3000" 
     depends_on:
       - backend
     environment:
-      - REACT_APP_API_URL=http://backend:4000 # Angi backend API URL
+      - REACT_APP_API_URL=http://backend:4000 
 
   backend:
     build: ./backend
     ports:
-      - "4000:4000" # Anta at ditt backend API kjører på port 4000
+      - "4000:4000" 
     depends_on:
       - db
     env_file:
