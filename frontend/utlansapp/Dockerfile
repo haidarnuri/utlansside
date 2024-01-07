@@ -1,16 +1,17 @@
-
-
+# frontend/Dockerfile
 FROM node:latest
 
 # Setter arbeidskatalogen i containeren
 WORKDIR /app
 
+# Kopierer package.json og package-lock.json
 COPY package*.json ./
 
+# Installerer avhengighetene
 RUN npm install
 
-# Kopierer kildekoden til appen inn i containeren
+# Kopierer resten av appens kildekode
 COPY . .
 
-# Kjører appen
+# Starter appen
 CMD ["npm", "start"]
