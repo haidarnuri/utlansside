@@ -4,7 +4,10 @@ services:
   frontend:
     build: ./frontend/utlansapp
     ports:
-      - "3000:3000" 
+      - "3000:3000"
+    volumes:
+      - ./frontend/utlansapp:/app
+      - /app/node_modules
     depends_on:
       - backend
     environment:
