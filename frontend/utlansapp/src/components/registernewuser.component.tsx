@@ -1,15 +1,13 @@
 import React from "react";
 
 
-const LoginComponent = () => {
+const RegisternewuserComponent = () => {
 
 const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
 const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log('username:', username);
-    console.log('password:', password);
+
   };
 
 return (
@@ -24,10 +22,9 @@ return (
       </label>
       <button type="submit">Login</button>
     </form>
-    
   );
 
 }
 
 
-export default LoginComponent;
+export default RegisternewuserComponent;
