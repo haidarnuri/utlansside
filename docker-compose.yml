@@ -15,12 +15,18 @@ services:
 
   backend:
     build: ./backend
-    ports:
-      - "4000:4000" 
-    depends_on:
-      - db
-    env_file:
-      - ./backend.env
+  ports:
+    - "4000:4000"
+  depends_on:
+    - db
+  env_file:
+    - ./backend.env
+  environment:
+    - DB_HOST=${DB_HOST}
+    - DB_USER=${DB_USER}
+    - DB_PASSWORD=${DB_PASSWORD}
+    - DB_NAME=${DB_NAME}
+    - REACT_APP_API_URL=http://backend:4000
 
   db:
     image: mariadb:latest
