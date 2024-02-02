@@ -1,6 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+import express from 'express';
+import cors from 'cors';
+import { json } from 'body-parser';
 
 const app = express();
 const port = 4000;
@@ -14,7 +14,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
-app.use(bodyParser.json()); // for parsing application/json
+app.use(json()); // for parsing application/json
 
 
 app.post('/register', (req, res) => {

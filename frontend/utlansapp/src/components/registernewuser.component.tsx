@@ -5,7 +5,7 @@ const RegisternewuserComponent = () => {
 const [fornavn, setFornavn] = React.useState('');
 const [etternavn, setEtternavn] = React.useState('');
 const [mail, setMail] = React.useState('');
-const [tlf, setTlf] = React.useState('');
+const [tlf, setTlf] = React.useState(0);
 const [kontaktlarer, setKontaktlarer] = React.useState('');
 const [password, setPassword] = React.useState('');
 
@@ -45,27 +45,27 @@ return (
     <form onSubmit={handleSubmit}>
       <label>
         Fornavn:
-        <input type="text" value={fornavn} onChange={(event) => setFornavn(event.target.value)} />
-      </label>
+        <input type="text" value={fornavn} placeholder="Skriv inn ditt fornavn" onChange={(event) => setFornavn(event.target.value)} />
+      </label><br />
       <label>
         Etternavn:
-        <input type="text" value={etternavn} onChange={(event) => setEtternavn(event.target.value)} />
-      </label>
+        <input type="text" value={etternavn} placeholder="Skriv inn ditt etternavn" onChange={(event) => setEtternavn(event.target.value)} />
+      </label><br />
       <label>
         Skolemail:
-        <input type="text" value={mail} onChange={(event) => setMail(event.target.value)} />
-      </label>
+        <input type="text" value={mail} placeholder="Skriv inn din osloskolemail" onChange={(event) => setMail(event.target.value)} />
+      </label><br />
       <label>
         tlf:
-        <input type="text" value={tlf} onChange={(event) => setTlf(event.target.value)} />
-      </label>
+        <input type="number" value={tlf} placeholder="Skriv inn ditt tlfnr" onChange={(event) => setTlf(parseInt(event.target.value))} />
+      </label><br />
       <label>
         kontaktlærer:
-        <input type="text" value={kontaktlarer} onChange={(event) => setKontaktlarer(event.target.value)} />
-      </label>
+        <input type="text" value={kontaktlarer} placeholder="Fullt navn på din kontaktlærer" onChange={(event) => setKontaktlarer(event.target.value)} />
+      </label><br />
       <label>
         Password:
-        <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+        <input type="password" value={password} placeholder="Ditt passord" onChange={(event) => setPassword(event.target.value)} />
       </label>
       <button type="submit">Register</button>
     </form>
