@@ -1,22 +1,32 @@
 import React from "react";
+import { isValidEmail, isValidPassword } from "../utils/validation";
 
 
 const LoginComponent = () => {
 
-const [username, setUsername] = React.useState('');
+  const [mail, setMail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
 const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('username:', username);
-    console.log('password:', password);
+    if(!isValidEmail(mail)){
+      console.log("Mailen er ikke riktig format!");
+    }
+    else if(!isValidPassword(password)){
+      console.log("Passord må ha minst et siffer, en stor og liten bokstav og ha minst 8 tegn");
+    }
+    else{
+      console.log('username:', mail);
+      console.log('password:', password);
+    }
+    
   };
 
 return (
     <form onSubmit={handleSubmit}>
       <label>
-        Username:
-        <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} />
+        Mail:
+        <input type="text" value={mail} onChange={(event) => setMail(event.target.value)} />
       </label>
       <label>
         Password:
