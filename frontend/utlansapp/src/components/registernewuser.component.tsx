@@ -1,5 +1,5 @@
 import React from "react";
-
+import {isValidName,isValidEmail,isValidPhone,isValidPassword} from "../utils/validation"
 
 const RegisternewuserComponent = () => {
 const [fornavn, setFornavn] = React.useState('');
@@ -20,25 +20,45 @@ const handleSubmit = async (event: { preventDefault: () => void; }) => {
       kontaktlarer,
       password,
     };
-
-    try {
-        const response = await fetch('http://localhost:4000/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(userData),
-        });
-  
-        if (response.ok) {
-          const result = await response.text();
-          console.log(result); 
-        } else {
-          console.error('Failed to register user');
+    if(!isValidName(fornavn)){
+      console.log("Fornavnet er ikke riktig format!");
+    }
+    else if(!isValidName(etternavn)){
+      console.log("etternavn er ikke riktig format!");
+    }
+    else if(!isValidEmail(mail)){
+      console.log("Mailen er ikke riktig format!");
+    }
+    else if(!isValidPhone(tlf.toString())){
+      console.log("tlfnr er ikke riktig format!");
+    }
+    
+   else if(!isValidName(kontaktlarer)){
+      console.log("kontaktlarer er ikke riktig format!");
+    }
+    else if(!isValidPassword(password)){
+      console.log("Passord må ha minst et siffer, en stor og liten bokstav og ha minst 8 tegn");
+    }
+    else{
+      try {
+          const response = await fetch('http://localhost:4000/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+          });
+    
+          if (response.ok) {
+            const result = await response.text();
+            console.log(result); 
+          } else {
+            console.error('Failed to register user');
+          }
+        } catch (error) {
+          console.error('Error message', error);
         }
-      } catch (error) {
-        console.error('Error message', error);
-      }
+    }
     };
 
 return (
