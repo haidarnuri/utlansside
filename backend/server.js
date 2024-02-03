@@ -1,10 +1,9 @@
-import express from 'express';
-import cors from 'cors';
-import { json } from 'body-parser';
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = 4000;
-
 
 const corsOptions = {
   origin: 'http://localhost:3000', 
@@ -12,14 +11,11 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
-
-app.use(json()); // for parsing application/json
-
+app.use(bodyParser.json()); // for parsing application/json
 
 app.post('/register', (req, res) => {
   console.log(req.body);
-  // database code here ....
+  // Database code here ....
   res.status(200).json({ message: 'User registered successfully!' });
 });
 
