@@ -42,8 +42,25 @@ CREATE TABLE IF NOT EXISTS admins (
   adminid INT AUTO_INCREMENT,
   fornavn VARCHAR(255) NOT NULL,
   etternavn VARCHAR(255) NOT NULL,
-  epost VARCHAR(255) NOT NULL UNIQUE,
+  epost VARCHAR(255) NOT NULL,
   telefonnummer VARCHAR(255),
   passord VARCHAR(255) NOT NULL,
   PRIMARY KEY(adminid)
 );
+
+
+-- Insert testvalues in different tables
+INSERT INTO brukere (fornavn, etternavn, epost, telefonnummer, klasse, kontaktlarer) VALUES
+('Test', 'Bruker1', 'testbruker1@osloskolen.no', '12345678', '10A', 'Kontaktlærer1'),
+('Test', 'Bruker2', 'testbruker2@osloskolen.no', '', '10B', 'Kontaktlærer2');
+
+INSERT INTO utstyr (typeutstyr, modell, statusutstyr, kjopsdato, sisteservice, anneninfo) VALUES
+('PC', 'Dell XPS', 'tilgjengelig', '2020-01-15', '2021-01-15', 'Ingen'),
+('Projektor', 'Epson X200', 'under vedlikehold', '2019-05-20', '2021-06-20', 'Lampen må byttes');
+
+INSERT INTO utlan (brukerid, utstyrsid, forventetreturdato, faktiskreturdato) VALUES
+(1, 1, '2023-02-10', NULL),
+(2, 2, '2023-02-15', NULL);
+
+INSERT INTO admins (fornavn, etternavn, epost, telefonnummer, passord) VALUES
+('Admin', 'Adminsen', 'admin@osloskolen.no', '87654321', 'SikkertPassord123');
