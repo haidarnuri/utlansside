@@ -37,3 +37,13 @@ CREATE TABLE IF NOT EXISTS utlan(
   ON UPDATE CASCADE,
   PRIMARY KEY(utlansid)
 );
+
+CREATE TABLE IF NOT EXISTS admins (
+  adminid INT AUTO_INCREMENT,
+  fornavn VARCHAR(255) NOT NULL,
+  etternavn VARCHAR(255) NOT NULL,
+  epost VARCHAR(255) NOT NULL UNIQUE,
+  telefonnummer VARCHAR(255),
+  passord VARCHAR(255) NOT NULL,
+  PRIMARY KEY(adminid)
+);
