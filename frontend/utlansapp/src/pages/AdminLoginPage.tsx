@@ -1,10 +1,10 @@
-
+import LoginComponent from "../components/login.component";
 
 
 const AdminLoginPage = () => {
-return(
-    console.log("halla")
-);
-}
-
+     
+    return (
+        <LoginComponent />
+    );
+  }
 export {AdminLoginPage};

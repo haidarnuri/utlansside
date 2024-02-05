@@ -1,5 +1,19 @@
-const AdminMainPage = () => {
 
-}
+
+
+
+
+
+
+const AdminMainPage = () => {
+    
+        
+    return (
+
+        <>
+        </>
+
+    );
+  }
 
 export {AdminMainPage};
