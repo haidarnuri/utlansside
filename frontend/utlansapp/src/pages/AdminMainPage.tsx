@@ -1,0 +1,5 @@
+const AdminMainPage = () => {
+
+}
+
+export {AdminMainPage};

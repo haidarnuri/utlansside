@@ -5,15 +5,22 @@ import LoginComponent from "../components/login.component";
 
 const MainLoginPage = () => {
     const navigate = useNavigate();
-    const onClick = () => {
+    const createNewUserButton = () => {
         navigate('/Registernewuser');
       };
+      const adminPageButton = () => {
+        navigate('/AdminLoginPage');
+      };
+      
     
     return (
 
         <><LoginComponent />
-       <button onClick={onClick}>
+       <button onClick={createNewUserButton}>
             Create new user
+       </button>
+       <button onClick={adminPageButton}>
+            Admin
        </button>
         
         </>
