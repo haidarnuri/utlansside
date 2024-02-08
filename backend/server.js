@@ -25,7 +25,7 @@ app.post('/register', (req, res) => {
 // GET
 app.get('/brukere', async (req, res) => {
   try {
-      const result = await db.pool.query("SELECT * FROM brukere");
+      const result = await db.pool.query("SELECT * FROM admins");
       res.send(result);
   } catch (err) {
     console.error("Error occurred while querying the database:", err.message);

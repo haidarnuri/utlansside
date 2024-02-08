@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { isValidEmail, isValidPassword } from "../utils/validation";
+import axios from "axios";
 
 
 
 const LoginComponent = () => {
 
-  const [mail, setMail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+const [mail, setMail] = React.useState('');
+const [password, setPassword] = React.useState('');
+
+
+useEffect(()=>{
+  axios.get('http://localhost:4000/brukere')
+  .then(users => console.log(users.data))
+  .catch(err => console.log(err))
+}, [])
 
 const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

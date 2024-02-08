@@ -6,11 +6,10 @@
 
 
 const AdminMainPage = () => {
-    
-        
-    return (
 
+    return (
         <>
+
         </>
 
     );
