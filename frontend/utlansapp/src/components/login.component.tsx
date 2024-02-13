@@ -10,11 +10,15 @@ const [mail, setMail] = React.useState('');
 const [password, setPassword] = React.useState('');
 
 
+
+
 useEffect(()=>{
   axios.get('http://localhost:4000/brukere')
   .then(users => console.log(users.data))
   .catch(err => console.log(err))
 }, [])
+
+
 
 const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -25,8 +29,12 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       console.log("Passord må ha minst et siffer, en stor og liten bokstav og ha minst 8 tegn");
     }
     else{
-      console.log('username:', mail);
-      console.log('password:', password);
+      axios.post('http://localhost:4000/brukere', {
+        mail: mail,
+        password: password
+      })
+      .then(data=>console.log('data sendt!', data))
+      .catch(err=>console.log(err))
     }
     
   };
