@@ -1,5 +1,6 @@
 import React from "react";
 import {isValidName,isValidEmail,isValidPhone,isValidPassword} from "../utils/validation"
+import axios from "axios";
 
 const RegisternewuserComponent = () => {
 const [fornavn, setFornavn] = React.useState('');
@@ -9,17 +10,9 @@ const [tlf, setTlf] = React.useState(0);
 const [kontaktlarer, setKontaktlarer] = React.useState('');
 const [password, setPassword] = React.useState('');
 
-const handleSubmit = async (event: { preventDefault: () => void; }) => {
+const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); 
 
-    const userData = {
-      fornavn,
-      etternavn,
-      mail,
-      tlf,
-      kontaktlarer,
-      password,
-    };
     if(!isValidName(fornavn)){
       console.log("Fornavnet er ikke riktig format!");
     }
@@ -32,7 +25,6 @@ const handleSubmit = async (event: { preventDefault: () => void; }) => {
     else if(!isValidPhone(tlf.toString())){
       console.log("tlfnr er ikke riktig format!");
     }
-    
    else if(!isValidName(kontaktlarer)){
       console.log("kontaktlarer er ikke riktig format!");
     }
@@ -40,26 +32,18 @@ const handleSubmit = async (event: { preventDefault: () => void; }) => {
       console.log("Passord må ha minst et siffer, en stor og liten bokstav og ha minst 8 tegn");
     }
     else{
-      try {
-          const response = await fetch('http://localhost:4000/register', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(userData),
-          });
-    
-          if (response.ok) {
-            const result = await response.text();
-            console.log(result); 
-          } else {
-            console.error('Failed to register user');
-          }
-        } catch (error) {
-          console.error('Error message', error);
-        }
+        axios.post('http://localhost:4000/register', {
+        fornavn: fornavn,
+        etternavn: etternavn,
+        mail: mail,
+        tlf: tlf,
+        kontaktlarer: kontaktlarer,
+        password: password
+      })
+      .then(data=>console.log('data sendt!', data))
+      .catch(err=>console.log(err))
     }
-    };
+  };
 
 return (
     <form onSubmit={handleSubmit}>
@@ -90,7 +74,6 @@ return (
       <button type="submit">Register</button>
     </form>
   );
-
 }
 
 
