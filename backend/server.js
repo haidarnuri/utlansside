@@ -26,7 +26,6 @@ app.post('/register', (req, res) => {
 app.get('/brukere', async (req, res) => {
   try {
       const result = await db.pool.query("SELECT * FROM brukere");
-      console.log("Dette er req :", req)
       console.log("Dette er result :", result)
       res.send(result);
   } catch (err) {
@@ -37,7 +36,8 @@ app.get('/brukere', async (req, res) => {
 
 app.post('/brukere', async (req, res) => {
   try {
-      console.log(req.body);
+      console.log("dette er din bruker: ", req.body.mail);
+      console.log("dette er ditt passord: ", req.body.password);
       res.status(200).json({message: "Data mottatt"});
   } catch (err) {
     console.error("Error occurred while querying the database:", err.message);
