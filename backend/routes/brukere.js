@@ -31,7 +31,7 @@ router.post("/register", async (req, res) => {
       kontaktlarer,
     ]);
 
-    res.status(200).json("result");
+    res.status(200).json("Data mottatt i DB");
   } catch (err) {
     console.error("Error occurred while querying the database:", err.message);
     res.status(500).json({
