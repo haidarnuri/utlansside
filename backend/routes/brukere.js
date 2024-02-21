@@ -30,17 +30,7 @@ router.post("/register", async (req, res) => {
       klasse,
       kontaktlarer,
     ]);
-    /*
-    fornavn VARCHAR(255) NOT NULL,
-  etternavn VARCHAR(255) NOT NULL,
-  epost VARCHAR(255) NOT NULL,
-  telefonnummer VARCHAR(255),
-  klasse VARCHAR(150) NOT NULL,  
-  kontaktlarer VARCHAR(255) NOT NULL,
-    console.log("Dette er din JSON fil", req.body);
-    console.log("dette er din bruker: ", req.body.mail);
-    console.log("dette er ditt passord: ", req.body.password);
-    */
+
     res.status(200).json("result");
   } catch (err) {
     console.error("Error occurred while querying the database:", err.message);
