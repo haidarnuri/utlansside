@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db");
 
-router.get("/", async (req, res) => {
+router.get("/:epost", async (req, res) => {
   try {
-    const result = await db.pool.query("SELECT * FROM brukere");
-    console.log("Dette er result :", result);
-    res.send(result);
+    const sqlQuery = "SELECT * FROM brukere WHERE epost=?";
+    const result = await db.pool.query(sqlQuery, req.params.epost);
+    res.status(200).json(result);
   } catch (err) {
     console.error("Error occurred while querying the database:", err.message);
     res.status(500).json({
@@ -16,12 +16,32 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", (req, res) => {
+router.post("/register", async (req, res) => {
   try {
+    const { fornavn, etternavn, epost, telefonnummer, klasse, kontaktlarer } =
+      req.body;
+    const sqlQuery =
+      "INSERT INTO brukere (fornavn, etternavn, epost, telefonnummer, klasse, kontaktlarer) VALUES (?,?,?,?,?,?)";
+    const result = await db.pool.query(sqlQuery, [
+      fornavn,
+      etternavn,
+      epost,
+      telefonnummer,
+      klasse,
+      kontaktlarer,
+    ]);
+    /*
+    fornavn VARCHAR(255) NOT NULL,
+  etternavn VARCHAR(255) NOT NULL,
+  epost VARCHAR(255) NOT NULL,
+  telefonnummer VARCHAR(255),
+  klasse VARCHAR(150) NOT NULL,  
+  kontaktlarer VARCHAR(255) NOT NULL,
     console.log("Dette er din JSON fil", req.body);
     console.log("dette er din bruker: ", req.body.mail);
     console.log("dette er ditt passord: ", req.body.password);
-    res.status(200).json({ message: "Data mottatt" });
+    */
+    res.status(200).json("result");
   } catch (err) {
     console.error("Error occurred while querying the database:", err.message);
     res.status(500).json({
