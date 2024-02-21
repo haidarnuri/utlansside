@@ -42,6 +42,7 @@ const RegisternewuserComponent = () => {
           fornavn: fornavn,
           etternavn: etternavn,
           epost: mail,
+          passord: password,
           telefonnummer: tlf,
           klasse: klasse,
           kontaktlarer: kontaktlarer,

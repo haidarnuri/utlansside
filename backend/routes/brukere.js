@@ -18,19 +18,32 @@ router.get("/:epost", async (req, res) => {
 
 router.post("/register", async (req, res) => {
   try {
-    const { fornavn, etternavn, epost, telefonnummer, klasse, kontaktlarer } =
-      req.body;
+    /*
+    const hashedPassword = bcrypt.hashSync(
+      password,
+      "$2a$10$CwTycUXWue0Thq9StjUM0u"
+    );*/
+    const {
+      fornavn,
+      etternavn,
+      epost,
+      passord,
+      telefonnummer,
+      klasse,
+      kontaktlarer,
+    } = req.body;
+
     const sqlQuery =
-      "INSERT INTO brukere (fornavn, etternavn, epost, telefonnummer, klasse, kontaktlarer) VALUES (?,?,?,?,?,?)";
+      "INSERT INTO brukere (fornavn, etternavn, epost, passord, telefonnummer, klasse, kontaktlarer) VALUES (?,?,?,?,?,?,?)";
     const result = await db.pool.query(sqlQuery, [
       fornavn,
       etternavn,
       epost,
+      passord,
       telefonnummer,
       klasse,
       kontaktlarer,
     ]);
-
     res.status(200).json("Data mottatt i DB");
   } catch (err) {
     console.error("Error occurred while querying the database:", err.message);

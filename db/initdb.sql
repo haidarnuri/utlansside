@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS brukere(
   fornavn VARCHAR(255) NOT NULL,
   etternavn VARCHAR(255) NOT NULL,
   epost VARCHAR(255) NOT NULL,
+  passord VARCHAR(255) NOT NULL,
   telefonnummer VARCHAR(255),
   klasse VARCHAR(150) NOT NULL,  
   kontaktlarer VARCHAR(255) NOT NULL,
@@ -50,9 +51,9 @@ CREATE TABLE IF NOT EXISTS admins (
 
 
 -- Insert testvalues in different tables
-INSERT INTO brukere (fornavn, etternavn, epost, telefonnummer, klasse, kontaktlarer) VALUES
-('Test', 'Bruker1', 'testbruker1@osloskolen.no', '12345678', '10A', 'Kontaktlærer1'),
-('Test', 'Bruker2', 'testbruker2@osloskolen.no', '', '10B', 'Kontaktlærer2');
+INSERT INTO brukere (fornavn, etternavn, epost, passord, telefonnummer, klasse, kontaktlarer) VALUES
+('Test', 'Bruker1', 'testbruker1@osloskolen.no', 'passordtestbruker', '12345678', '10A', 'Kontaktlærer1'),
+('Test', 'Bruker2', 'testbruker2@osloskolen.no','passordtestbruker', '', '10B', 'Kontaktlærer2');
 
 INSERT INTO utstyr (typeutstyr, modell, statusutstyr, kjopsdato, sisteservice, anneninfo) VALUES
 ('PC', 'Dell XPS', 'tilgjengelig', '2020-01-15', '2021-01-15', 'Ingen'),
