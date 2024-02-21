@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db");
+const bcrypt = require("bcryptjs");
 
 router.get("/:epost", async (req, res) => {
   try {
@@ -18,11 +19,6 @@ router.get("/:epost", async (req, res) => {
 
 router.post("/register", async (req, res) => {
   try {
-    /*
-    const hashedPassword = bcrypt.hashSync(
-      password,
-      "$2a$10$CwTycUXWue0Thq9StjUM0u"
-    );*/
     const {
       fornavn,
       etternavn,
