@@ -17,8 +17,11 @@ const LoginComponent = () => {
     } else {
       console.log("mailen din er ", mail);
       axios
-        .get(`http://localhost:4000/brukere/${mail}`)
-        .then((users) => console.log(users.data[0].epost))
+        .post("http://localhost:4000/brukere/login", {
+          epost: mail,
+          passord: password,
+        })
+        .then((response) => console.log(response))
         .catch((err) => console.log(err));
     }
   };

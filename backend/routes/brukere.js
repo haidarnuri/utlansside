@@ -1,13 +1,32 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db");
-const bcrypt = require("bcryptjs");
+//const bcrypt = require("bcryptjs");
 
+/*
 router.get("/:epost", async (req, res) => {
   try {
     const sqlQuery = "SELECT * FROM brukere WHERE epost=?";
     const result = await db.pool.query(sqlQuery, req.params.epost);
+    console.log(result[0].passord);
+    console.log(result[0].epost);
+
     res.status(200).json(result);
+  } catch (err) {
+    console.error("Error occurred while querying the database:", err.message);
+    res.status(500).json({
+      message: "Error while querying the database",
+      error: err.message,
+    });
+  }
+});
+*/
+router.post("/login", async (req, res) => {
+  try {
+    console.log("dette kom fra frontend: ", req.body.epost);
+    const sqlQuery = "SELECT * FROM brukere WHERE epost=?";
+    const result = await db.pool.query(sqlQuery, req.body.epost);
+    console.log("dette kom fra db: ", result[0]);
   } catch (err) {
     console.error("Error occurred while querying the database:", err.message);
     res.status(500).json({
