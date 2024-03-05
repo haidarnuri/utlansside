@@ -52,8 +52,8 @@ CREATE TABLE IF NOT EXISTS admins (
 
 -- Insert testvalues in different tables
 INSERT INTO brukere (fornavn, etternavn, epost, passord, telefonnummer, klasse, kontaktlarer) VALUES
-('Test', 'Bruker1', 'testbruker1@osloskolen.no', 'passordtestbruker', '12345678', '10A', 'Kontaktlærer1'),
-('Test', 'Bruker2', 'testbruker2@osloskolen.no','passordtestbruker', '', '10B', 'Kontaktlærer2');
+('Test', 'Bruker1', 'testbruker1@osloskolen.no', 'passordtestbruker165!"#"!!cDDD', '12345678', '10A', 'Kontaktlærer1'),
+('Test', 'Bruker2', 'testbruker2@osloskolen.no','passordtestbruker165!"#"!!cDDD', '', '10B', 'Kontaktlærer2');
 
 INSERT INTO utstyr (typeutstyr, modell, statusutstyr, kjopsdato, sisteservice, anneninfo) VALUES
 ('PC', 'Dell XPS', 'tilgjengelig', '2020-01-15', '2021-01-15', 'Ingen'),
@@ -64,4 +64,4 @@ INSERT INTO utlan (brukerid, utstyrsid, forventetreturdato, faktiskreturdato) VA
 (2, 2, '2023-02-15', NULL);
 
 INSERT INTO admins (fornavn, etternavn, epost, telefonnummer, passord) VALUES
-('Admin', 'Adminsen', 'admin@osloskolen.no', '87654321', 'SikkertPassord123');
+('Admin', 'Adminsen', 'admin@osloskolen.no', '87654321', 'passordtestbruker165!"#"!!cDDD');
