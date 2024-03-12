@@ -23,10 +23,19 @@ router.get("/:epost", async (req, res) => {
 */
 router.post("/login", async (req, res) => {
   try {
-    console.log("dette kom fra frontend: ", req.body.epost);
-    const sqlQuery = "SELECT * FROM brukere WHERE epost=?";
-    const result = await db.pool.query(sqlQuery, req.body.epost);
-    console.log("dette kom fra db: ", result[0]);
+    console.log("denne mailen kom fra frontend: ", req.body.epost);
+    const sqlQueryMail = "SELECT * FROM brukere WHERE epost=?";
+    const resultMail = await db.pool.query(sqlQueryMail, req.body.epost);
+
+    console.log("dette passordet kom fra frontend: ", req.body.passord);
+    const sqlQueryPassword = "SELECT * FROM brukere WHERE passord=?";
+    const resultPassord = await db.pool.query(
+      sqlQueryPassword,
+      req.body.passord
+    );
+
+    console.log("denne mailen kom fra db: ", resultMail[0].epost);
+    console.log("dette passordet kom fra db: ", resultPassord[0].passord);
   } catch (err) {
     console.error("Error occurred while querying the database:", err.message);
     res.status(500).json({

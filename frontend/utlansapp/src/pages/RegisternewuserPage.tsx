@@ -1,11 +1,7 @@
-
 import RegisternewuserComponent from "../components/registernewuser.component";
 
 const RegisternewuserPage = () => {
-    return (
-        <RegisternewuserComponent />
+  return <RegisternewuserComponent />;
+};
 
-    );
-  }
-  
-  export { RegisternewuserPage };
+export { RegisternewuserPage };
