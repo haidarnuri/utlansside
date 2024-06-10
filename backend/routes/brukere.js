@@ -27,7 +27,6 @@ router.post("/login", async (req, res) => {
     const sqlQueryMail = "select * from brukere where epost=?;";
     const responsEpostFromDB = await db.pool.query(sqlQueryMail,req.body.epost);
     
-    console.log(responsEpostFromDB);
 
     if (responsEpostFromDB.length > 0) {
       res.status(200).json("Brukeren din finneDEs!");

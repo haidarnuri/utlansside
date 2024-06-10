@@ -1,5 +1,10 @@
 CREATE DATABASE IF NOT EXISTS utlanITutstyr;
+GRANT ALL PRIVILEGES ON utlanITutstyr.* TO 'utlandbcontaineruser'@'%';
+FLUSH PRIVILEGES;
+
 USE utlanITutstyr;
+
+
 
 CREATE TABLE IF NOT EXISTS brukere(
   brukerid INT AUTO_INCREMENT,
@@ -48,6 +53,8 @@ CREATE TABLE IF NOT EXISTS admins (
   passord VARCHAR(255) NOT NULL,
   PRIMARY KEY(adminid)
 );
+
+
 
 
 -- Insert testvalues in different tables
