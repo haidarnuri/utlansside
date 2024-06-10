@@ -23,7 +23,25 @@ router.get("/:epost", async (req, res) => {
 */
 router.post("/login", async (req, res) => {
   try {
+    
+    const sqlQueryMail = "select * from brukere where epost=?;";
+    const responsEpostFromDB = await db.pool.query(sqlQueryMail,req.body.epost);
+    
+    console.log(responsEpostFromDB);
+
+    if (responsEpostFromDB.length > 0) {
+      res.status(200).json("Brukeren din finneDEs!");
+    } else {
+      res.status(200).json("Brukeren din finnes ikke!");
+    }
+  } catch (error) {
+    console.log("Feilmeldingen er ", error);
+    res.status(500).json({ message: "En feil oppsto under databasforespørselen" });
+  }
+  
+  /*try {
     console.log("denne mailen kom fra frontend: ", req.body.epost);
+   
     const sqlQueryMail = "SELECT * FROM brukere WHERE epost=?";
     const resultMail = await db.pool.query(sqlQueryMail, req.body.epost);
 
@@ -42,7 +60,7 @@ router.post("/login", async (req, res) => {
       message: "Error while querying the database",
       error: err.message,
     });
-  }
+  }*/
 });
 
 router.post("/register", async (req, res) => {

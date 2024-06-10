@@ -1,5 +1,5 @@
 # utlansside
-app for utlån av IT utstyr
+app for utlån av utstyr
 
 
 # Teknologier
