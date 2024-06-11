@@ -14,6 +14,7 @@ function App() {
         <Route path="/Registernewuser" element={<RegisternewuserPage />} />
         <Route path="/AdminLoginPage" element={<AdminLoginPage />} />
         <Route path="/AdminMainPage" element={<AdminMainPage />} />
+        <Route path="/equipment-overview" element={<EquipmentOverview />} />
       </Routes>
     </BrowserRouter>
   );

@@ -12,7 +12,6 @@ const LoginComponent = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log("Vi er i handleSubmit");
     event.preventDefault();
     if (!isValidEmail(mail)) {
       console.log("Mailen er ikke riktig format!");
@@ -27,7 +26,13 @@ const LoginComponent = () => {
           epost: mail,
           passord: password,
         })
-        .then((response) => console.log(response)) //Koden leser ikke denne linja
+        .then((response) => {
+          if(response.data=="Velkommen"){
+            navigate('/equipment-overview');
+          }else{
+            return ;
+          }
+        }) //Koden leser ikke denne linja
         .catch((err) => console.log(err));
     }
   };
