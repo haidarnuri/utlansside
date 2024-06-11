@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db");
-
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
+
 
 router.post("/login", async (req, res) => {
   try {
@@ -32,13 +32,15 @@ router.post("/register", async (req, res) => {
       kontaktlarer,
     } = req.body;
 
+    const hashedPassword = await bcrypt.hash(passord,10);
     const sqlQuery =
       "INSERT INTO brukere (fornavn, etternavn, epost, passord, telefonnummer, klasse, kontaktlarer) VALUES (?,?,?,?,?,?,?)";
-    const result = await db.pool.query(sqlQuery, [
+    
+      const result = await db.pool.query(sqlQuery, [
       fornavn,
       etternavn,
       epost,
-      passord,
+      hashedPassword,
       telefonnummer,
       klasse,
       kontaktlarer,
