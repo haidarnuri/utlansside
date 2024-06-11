@@ -7,12 +7,20 @@ const bcrypt = require("bcryptjs");
 
 router.post("/login", async (req, res) => {
   try {
-    const sqlQueryMail = "select * from brukere where epost=? and passord=?;";
-    const responsEpostFromDB = await db.pool.query(sqlQueryMail,[req.body.epost,req.body.passord]);
+    const sqlQueryMail = "select * from brukere where epost=?";
+    const responsEpostFromDB = await db.pool.query(sqlQueryMail,req.body.epost);
     if (responsEpostFromDB.length > 0) {
-      res.status(200).json("Velkommen");
+      const user = responsEpostFromDB[0];
+      const isMatch = await bcrypt.compare(req.body.passord, user.passord);
+
+      if (isMatch) {
+        const token = jwt.sign({ userId: user.id }, 'your_jwt_secret', { expiresIn: '1h' });
+        res.status(200).json({ message: "Velkommen", token });
+      } else {
+        res.status(401).json({ message: "Invalid email or password" }); //feil passord
+      }
     } else {
-      res.status(200).json("Ikke velkommen");
+      res.status(401).json({ message: "Invalid email or password" }); //brukeren finnes ikke
     }
   } catch (error) {
     console.log("Feilmeldingen er ", error);
@@ -47,7 +55,6 @@ router.post("/register", async (req, res) => {
     ]);
     res.status(200).json("Data mottatt i DB");
   } catch (err) {
-    console.error("Error occurred while querying the database:", err.message);
     res.status(500).json({
       message: "Error while querying the database",
       error: err.message,
