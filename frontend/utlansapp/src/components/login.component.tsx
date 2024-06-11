@@ -14,11 +14,9 @@ const LoginComponent = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!isValidEmail(mail)) {
-      console.log("Mailen er ikke riktig format!");
+      console.log("Feil brukernavn. Bruk eposten din.");
     } else if (!isValidPassword(password)) {
-      console.log(
-        "Passord må ha minst et siffer, en stor og liten bokstav og ha minst 8 tegn"
-      );
+      console.log("Feil passord");
     } else {
       console.log("vi er i else løkken");
       axios
@@ -33,12 +31,13 @@ const LoginComponent = () => {
         }
         })
         .then((response) => {
-          if(response.data=="Velkommen"){
+          if(response.data.message==="Velkommen"){
+            localStorage.setItem('token', response.data.token); // Lagrer token i localStorage
             navigate('/equipment-overview');
           }else{
             return ;
           }
-        }) //Koden leser ikke denne linja
+        }) 
         .catch((err) => console.log(err));
     }
   };
