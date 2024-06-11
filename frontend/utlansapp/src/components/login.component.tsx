@@ -25,6 +25,12 @@ const LoginComponent = () => {
         .post("http://localhost:4000/brukere/login", {
           epost: mail,
           passord: password,
+        }, {
+          withCredentials: true,
+          headers: {
+            'Access-Control-Allow-Origin': '*', 
+            'Content-Type': 'application/json'
+        }
         })
         .then((response) => {
           if(response.data=="Velkommen"){

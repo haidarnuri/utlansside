@@ -1,23 +1,20 @@
-const express = require("express");
-const db = require("./db");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const brukereRouter = require("./routes/brukere");
-
+const express = require('express');
+const cors = require('cors');
 const app = express();
-const port = 4000;
+const userRouter = require('./routes/brukere'); 
 
-const corsOptions = {
-  origin: "http://localhost:3000",
-  optionsSuccessStatus: 200,
-};
+app.use(express.json()); // Middleware for å parse JSON-kropper
 
-app.use(cors(corsOptions));
-app.use(bodyParser.json()); // for parsing application/json
+// Konfigurer CORS for å tillate cookies/credentials
+app.use(cors({
+  origin: 'http://localhost:3000', // Tillat frontend-opprinnelsen
+  credentials: true // Tillat sending av cookies
+}));
 
-app.use("/brukere", brukereRouter);
+// Bruk bruker-ruter
+app.use('/brukere', userRouter);
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
