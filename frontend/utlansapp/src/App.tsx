@@ -5,6 +5,8 @@ import { RegisternewuserPage } from "./pages/RegisternewuserPage";
 import { AdminLoginPage } from "./pages/AdminLoginPage";
 import { AdminMainPage } from "./pages/AdminMainPage";
 import { EquipmentOverview } from "./pages/EquipmentOverview";
+import ProtectedRoute from "./components/protectedRoute";
+
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
         <Route path="/Registernewuser" element={<RegisternewuserPage />} />
         <Route path="/AdminLoginPage" element={<AdminLoginPage />} />
         <Route path="/AdminMainPage" element={<AdminMainPage />} />
-        <Route path="/equipment-overview" element={<EquipmentOverview />} />
+        <Route path="/equipment-overview" element={<ProtectedRoute element={EquipmentOverview} />} />      
       </Routes>
     </BrowserRouter>
   );
