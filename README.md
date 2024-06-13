@@ -33,11 +33,11 @@ DB_NAME=
 
 
 ## Bidragsregler
-1. Fork prosjektet
-2. Opprett en ny branch (`git checkout -b .... `)
-3. Commit endringer (`git commit -m '...'`)
-4. Push til branchen (`git push origin `)
-5. Opprett en Pull Request
+1. Fork prosjektet.
+2. Opprett en ny branch: `git checkout -b branch-navn`.
+3. Commit endringer: `git commit -m 'Beskriv endringen'`.
+4. Push til branchen: `git push origin branch-navn`.
+5. Opprett en Pull Request.
 
 ## Lisens
 Dette prosjektet er lisensiert under MIT-lisensen - se [LICENSE](License) filen for detaljer.
