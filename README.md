@@ -1,30 +1,43 @@
-# utlansside
-app for utlån av utstyr
+# Utlansside
+App for utlån av utstyr. 
+
+Applikasjonen vil nå kjøre på `http://localhost:3000` for frontend og `http://localhost:4000` for backend.
+
+## Oppstartsinstruksjoner for databasen
+Når Docker-komposisjonen kjører, vil MariaDB-databasen automatisk bli konfigurert og initialisert.
+
+## Forhåndsinstaller
+- [Docker](https://www.docker.com/products/docker-desktop)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [Node og NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
+## Teknologier
+Frontend: React (med TypeScript)  
+Backend: Node.js, Express  
+Database: MariaDB  
+Container: Docker  
+
+## Miljøvariabler
+Opprett en `infodb.env`-fil i rotkatalogen og legg til følgende variabler:
+
+MARIADB_ROOT_PASSWORD= 
+MARIADB_USER=
+MARIADB_PASSWORD=
+
+Opprett en `backend.env`-fil i rotkatalogen og legg til følgende variabler:
+
+DB_HOST=
+DB_USER=
+DB_PASSWORD=
+DB_NAME=
 
 
-# Teknologier
+## Bidragsregler
+1. Fork prosjektet
+2. Opprett en ny branch (`git checkout -b feature/ny-funksjonalitet`)
+3. Commit endringer (`git commit -m 'Legg til ny funksjonalitet'`)
+4. Push til branchen (`git push origin `)
+5. Opprett en Pull Request
 
-Frontend: React (med TypeScript)
-Backend: Node.js, Express
-Database: MariaDB
-Container: Docker
-
-
-# bruk av løsning
-Steg 1:
-Klon repoet ved å skrive følgende i terminalen:
-```
-    git clone https://github.com/dittBrukernavn/utlansside.git
-```
-Steg 2:
-naviger deg til utlanssiden i treminalen
-
-Steg 3:
-Skriv følgende i terminalen
-```
-    docker-compose up --build
-```
-Den vil nå kjøre på http://localhost:3000 på frontend og http://localhost:4000 på backend.
-
-
-
+## Lisens
+Dette prosjektet er lisensiert under MIT-lisensen - se [LICENSE](License) filen for detaljer.
