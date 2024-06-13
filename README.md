@@ -6,7 +6,7 @@ Applikasjonen vil nå kjøre på `http://localhost:3000` for frontend og `http:/
 ## Oppstartsinstruksjoner for databasen
 Når Docker-komposisjonen kjører, vil MariaDB-databasen automatisk bli konfigurert og initialisert.
 
-## Forhåndsinstaller
+## Nødvendige installasjoner
 - [Docker](https://www.docker.com/products/docker-desktop)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - [Node og NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
@@ -34,8 +34,8 @@ DB_NAME=
 
 ## Bidragsregler
 1. Fork prosjektet
-2. Opprett en ny branch (`git checkout -b feature/ny-funksjonalitet`)
-3. Commit endringer (`git commit -m 'Legg til ny funksjonalitet'`)
+2. Opprett en ny branch (`git checkout -b .... `)
+3. Commit endringer (`git commit -m '...'`)
 4. Push til branchen (`git push origin `)
 5. Opprett en Pull Request
 
