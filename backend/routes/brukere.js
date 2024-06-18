@@ -17,10 +17,10 @@ router.post("/login", async (req, res) => {
         const token = jwt.sign({ userId: user.id }, 'your_jwt_secret', { expiresIn: '1h' });
         res.status(200).json({ message: "Velkommen", token });
       } else {
-        res.status(401).json({ message: "Invalid email or password" }); //feil passord
+        res.status(401).json({ message: "Feil brukernavn eller passord" }); 
       }
     } else {
-      res.status(401).json({ message: "Invalid email or password" }); //brukeren finnes ikke
+      res.status(401).json({ message: "Brukeren finnes ikke" });
     }
   } catch (error) {
     console.log("Feilmeldingen er ", error);

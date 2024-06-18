@@ -10,7 +10,7 @@ const MainLoginPage = () => {
         <>
         <LoginComponent />
         <ButtonComponent label="Create new user" path="/Registernewuser" />
-        <ButtonComponent label="admin" path="/AdminLoginPage" />
+        <ButtonComponent label="admin" path="/AdminLoginPage" />  
         </>
     );
   }

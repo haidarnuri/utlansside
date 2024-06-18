@@ -1,5 +1,13 @@
+import { ButtonComponent } from "../components/button.component";
+import LogoutComponent from "../components/logout.component";
+
 const EquipmentOverview = () => {
-  return <h1>heisann</h1>;
+  return(
+  <>
+
+    <LogoutComponent />
+  </>
+  )
 };
 
 export { EquipmentOverview };
